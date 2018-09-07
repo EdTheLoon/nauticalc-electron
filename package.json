@@ -15,6 +15,7 @@
 	  "url": "http://www.adrianreid.eu"
   },
   "homepage": "http://www.adrianreid.eu",
+  "copyright": "Copyright 2018 © Adrian Reid",
   "license": "MIT",
   "devDependencies": {
     "electron": "^2.0.8",
