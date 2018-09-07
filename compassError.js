@@ -25,7 +25,7 @@ document.querySelector("#calcErrorForm").addEventListener("submit", function (e)
   }
 
   deviation = corrected - magnetic
-  comErr = magnetic - gyro
+  comErr = gyro - magnetic
 
   devArray = getDirectionEW(deviation)
   deviation = devArray[0]
