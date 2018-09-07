@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NautiCalc</title> <!-- EDIT ME -->
+  <link rel="stylesheet" href="./assets/css/materialize.css">
+  <link rel="stylesheet" href="./assets/icons/material-icons.css">
+</head>
+<body>
+  <!-- Navigation Bar Content -->
+  <nav class="nav-extended blue darken-4">
+    <div class="nav-wrapper">
+      <a class="brand-logo left">NautiCalc</a> <!-- EDIT ME -->
+      <ul class="right">
+        <li><a target="_blank" href="https://www.adrianreid.eu/">Copyright 2018 © Adrian Reid</a></li>
+      </ul>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#tabAbout">About</a></li>
+        <li class="tab"><a href="#tabCompass">Compass Error</a></li>
+        <li class="tab"><a href="#tabGyro">Gyro Error</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Actual Body Content -->
+  <div class="container">
+    <!-- ABOUT TAB -->
+    <div id="tabAbout">
+      <div class="section">
+        This program is designed to carry out compass error and gyro error calculations for you.<br><br>
+        Some manual calculation will still need to be carried out to determine LHA and Declination of the observed heavenly body.<br><br>
+        Select one of the tabs above to get started, fill in the details and press 'Calculate'.
+          <blockquote class="blue lighten-4"><i class="material-icons right">announcement</i>
+            <b>Important Note:</b><br>
+            Enter degrees and minutes in the following format:<br>
+            365° 27.9' = 365-27.9
+          </blockquote>
+      </div>
+      <div class="divider blue darken-4"></div>
+      <div class="section">
+        <b>Disclaimer:</b><br>
+        This program has been rigorously tested but it is impossible to test for every situation.
+      </div>
+    </div>
+
+    <!-- COMPASS ERROR TAB -->
+    <div id="tabCompass">
+      <div class="section"><i class="material-icons right">announcement</i>
+        <b>Enter degrees and minutes in the following format:</b><br>
+        365° 27.9' = 365-27.9
+      </div>
+      <form id="calcErrorForm" class="center">
+        <div class="input-field">
+          <input id="cmp_magnetic" type="text" class="validate" required pattern="^[0-9]{1,3}$|^[0-9]{1,3}.[0-9]{1,3}$">
+          <label for="cmp_magnetic">Magnetic</label>
+        </div>
+        <div class="input-field">
+          <input id="cmp_gyro" type="text" class="validate" required pattern="^[0-9]{1,3}$|^[0-9]{1,3}.[0-9]{1,3}$">
+          <label for="cmp_gyro">Gyro/True</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s8" style="padding-left: 0">
+            <input id="cmp_variation" type="text" class="validate" required pattern="^[0-9]{1,3}$|^[0-9]{1,3}.[0-9]{1,3}$">
+            <label for="cmp_variation">Variation</label>
+          </div>
+          <a id="cmp_varDir" class="btn-large waves-effect waves-light col s4">E</a>   
+        </div>   
+        <button class="btn waves-effect waves-light" id="cmp_Calc">
+          Calculate
+          <i class="material-icons right">done</i>
+        </button>
+      </form>
+    </div>
+
+    <!-- GYRO ERROR TAB -->
+    <div id="tabGyro">
+        <div class="section"><i class="material-icons right">announcement</i>
+          <b>Enter degrees and minutes in the following format:</b><br>
+          365° 27.9' = 365-27.9
+        </div>
+        <form id="gyroErrorForm" class="center">
+          <div class="input-field">
+            <input id="gyro_gyro" type="text" class="validate" required pattern="^[0-9]{1,3}$|^[0-9]{1,3}.[0-9]{1,3}$">
+            <label for="gyro_gyro">Gyro Bearing of Object</label>
+          </div>
+          <div class="row">
+            <div class="input-field col s8" style="padding-left: 0">
+              <input id="gyro_latitude" type="text" class="validate" required pattern="^[0-9]{1,2}-[0-9]{1,2}.[0-9]$">
+              <label for="gyro_latitude">Latitude</label>
+            </div>
+            <a id="gyro_latDir" class="btn-large waves-effect waves-light col s4">N</a>
+          </div>
+          <div class="input-field">
+              <input id="gyro_LHA" type="text" class="validate" required pattern="^[0-9]{1,3}-[0-9]{1,2}.[0-9]$">
+              <label for="gyro_LHA">LHA</label>
+            </div>
+          <div class="row">
+            <div class="input-field col s8" style="padding-left: 0">
+              <input id="gyro_declination" type="text" class="validate" required pattern="^[0-9]{1,2}-[0-9]{1,2}.[0-9]$">
+              <label for="gyro_declination">Declination</label>
+            </div>
+            <a id="gyro_declDir" class="btn-large waves-effect waves-light col s4">N</a>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" id="gyro_Calc">
+            Calculate
+            <i class="material-icons right">done</i>
+          </button>
+        </form>
+    </div>
+  </div>
+
+  <!-- Materialize JavaScript, leave at end of body for optimized loading -->
+  <script type="text/javascript" src="assets/js/materialize.js"></script>
+  <script type="text/javascript">
+    // Initialise materialize
+    document.addEventListener('DOMContentLoaded', function() {
+      var instances = M.AutoInit();
+    });
+
+    require("./buttonHandling.js")
+    require("./compassError.js")
+    require("./gyroError.js")
+  </script>
+</body>
+</html>

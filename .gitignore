@@ -1,0 +1,6 @@
+build/
+dist/
+*tgz
+node_modules/
+yarn-error.log
+yarn.lock
