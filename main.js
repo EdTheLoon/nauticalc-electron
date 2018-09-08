@@ -6,9 +6,8 @@ const {app, BrowserWindow, globalShortcut, Menu, ipcMain} = electron
 let mainWindow
 let resultsWindow
 
-// Uncomment for development mode or production mode
-// process.env.NODE_ENV = "development"
-process.env.NODE_ENV = "production"
+// Uncomment for development mode. Comment for production mode
+process.env.NODE_ENV = "development"
 
 // Windows needs some slightly different sizes. Set true if building for windows
 process.env.TARGET_WIN = false

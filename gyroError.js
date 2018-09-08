@@ -35,7 +35,7 @@ document.querySelector("#gyroErrorForm").addEventListener("submit", function (e)
   //alert("Gyro: " + gyro + "\nLatitude: " + latitude + " " + latDir + "\nLHA: " + LHA + "\nDeclination: " + declination + " " + declDir)
 
   // Start calculating A
-  a = Math.abs(degs(Math.tan(latitude))) / degs(Math.tan(rads(LHA)))
+  a = Math.abs(degs(Math.tan(rads(latitude))) / degs(Math.tan(rads(LHA))))
   if (LHA > 90.0 && LHA < 270.0) {
     aDir = latDir
   } else {
@@ -97,6 +97,15 @@ document.querySelector("#gyroErrorForm").addEventListener("submit", function (e)
   errDirArray = getDirectionHL(gyroErr)
   gyroErr = errDirArray[0]
   errDir = errDirArray[1]
+
+  // Debug code
+  console.log("A: " + a + " " + aDir)
+  console.log("B: " + b + " " + bDir)
+  console.log("C: " + c + " " + cDir)
+  console.log("a3: " + cDir + " " + a3 + "&deg; " + azDir)
+  console.log("Az: " + az)
+  console.log("Gyro Error: " + gyroErr + " " + errDir)
+    
 
   ipcRenderer.send("results:gyro", 300, 340, gyro, txtLat, latDir, txtLHA, txtDec, declDir, a, aDir, b, bDir, c, cDir, a3, az, azDir, gyroErr, errDir)
 })
