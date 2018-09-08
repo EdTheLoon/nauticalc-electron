@@ -10,7 +10,7 @@ let resultsWindow
 // process.env.NODE_ENV = "development"
 
 // Windows needs some slightly different sizes. Set true if building for windows
-process.env.TARGET_WIN = false
+TARGET_WIN = true
 
 // Initialise the app. Create windows.
 app.on("ready", createMainWindow)
@@ -18,9 +18,9 @@ app.on("ready", createMainWindow)
 // CREATE WINDOW FUNCTON
 function createMainWindow() {
   // Create new window
-  if (process.env.TARGET_WIN == true) {
+  if (TARGET_WIN == true) {
     _w = 450
-    _h = 620
+    _h = 680
   } else {
     _w = 450
     _h = 600
@@ -70,7 +70,7 @@ function createMainWindow() {
 // CREATE RESULTS WINDOW FUNCTION
 function createResultsWindow(_width, _height) {
     // Create new window
-    if (process.env.TARGET_WIN == false) {
+    if (TARGET_WIN == false) {
       resultsWindow = new BrowserWindow({
         width: _width,
         height: _height,
@@ -79,7 +79,7 @@ function createResultsWindow(_width, _height) {
     } else {
       resultsWindow = new BrowserWindow({
         width: _width,
-        height: _height + 20,
+        height: _height + 60,
         show: false
       })
     }
