@@ -7,7 +7,7 @@ let mainWindow
 let resultsWindow
 
 // Uncomment for development mode. Comment for production mode
-process.env.NODE_ENV = "development"
+// process.env.NODE_ENV = "development"
 
 // Windows needs some slightly different sizes. Set true if building for windows
 process.env.TARGET_WIN = false
@@ -20,14 +20,14 @@ function createMainWindow() {
   // Create new window
   if (process.env.TARGET_WIN == true) {
     _w = 450
-    _h = 610
+    _h = 620
   } else {
     _w = 450
-    _h = 610
+    _h = 600
   }
   mainWindow = new BrowserWindow({
-    width: 450,
-    height: 600,
+    width: _w,
+    height: _h,
     show: false
   })
   // Load HTML file into window
@@ -73,12 +73,14 @@ function createResultsWindow(_width, _height) {
     if (process.env.TARGET_WIN == false) {
       resultsWindow = new BrowserWindow({
         width: _width,
-        height: _height
+        height: _height,
+        show: false
       })
     } else {
       resultsWindow = new BrowserWindow({
         width: _width,
-        height: _height + 20
+        height: _height + 20,
+        show: false
       })
     }
     // Load HTML file into window
@@ -91,6 +93,11 @@ function createResultsWindow(_width, _height) {
   
     // Remove the default menu
     Menu.setApplicationMenu(null)
+
+    // Show the window once everything is loaded and good to go
+    resultsWindow.once("ready-to-show", function() {
+      resultsWindow.show()
+    })
     
     // Garbage collection
     resultsWindow.on("close", function() {

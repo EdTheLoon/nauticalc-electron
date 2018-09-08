@@ -107,7 +107,7 @@ document.querySelector("#gyroErrorForm").addEventListener("submit", function (e)
   console.log("Gyro Error: " + gyroErr + " " + errDir)
     
 
-  ipcRenderer.send("results:gyro", 300, 340, gyro, txtLat, latDir, txtLHA, txtDec, declDir, a, aDir, b, bDir, c, cDir, a3, az, azDir, gyroErr, errDir)
+  ipcRenderer.send("results:gyro", 300, 300, gyro, txtLat, latDir, txtLHA, txtDec, declDir, a, aDir, b, bDir, c, cDir, a3, az, azDir, gyroErr, errDir)
 })
 
 // Parses degrees and minutes input

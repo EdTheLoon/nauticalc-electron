@@ -35,7 +35,7 @@ document.querySelector("#calcErrorForm").addEventListener("submit", function (e)
   comErr = comErrArray[0]
   errDir = comErrArray[1]
 
-  ipcRenderer.send("results:compass", 250, 300, magnetic, deviation, devDir, corrected, variation, varDir, gyro, comErr, errDir)
+  ipcRenderer.send("results:compass", 250, 255, magnetic, deviation, devDir, corrected, variation, varDir, gyro, comErr, errDir)
 })
 
 // Determines whether the passed in float is East or West then removes any negative
