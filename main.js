@@ -10,12 +10,22 @@ let resultsWindow
 // process.env.NODE_ENV = "development"
 process.env.NODE_ENV = "production"
 
+// Windows needs some slightly different sizes. Set true if building for windows
+process.env.TARGET_WIN = false
+
 // Initialise the app. Create windows.
 app.on("ready", createMainWindow)
 
 // CREATE WINDOW FUNCTON
 function createMainWindow() {
   // Create new window
+  if (process.env.TARGET_WIN == true) {
+    _w = 450
+    _h = 610
+  } else {
+    _w = 450
+    _h = 610
+  }
   mainWindow = new BrowserWindow({
     width: 450,
     height: 600,
@@ -61,10 +71,17 @@ function createMainWindow() {
 // CREATE RESULTS WINDOW FUNCTION
 function createResultsWindow(_width, _height) {
     // Create new window
-    resultsWindow = new BrowserWindow({
-      width: _width,
-      height: _height
-    })
+    if (process.env.TARGET_WIN == false) {
+      resultsWindow = new BrowserWindow({
+        width: _width,
+        height: _height
+      })
+    } else {
+      resultsWindow = new BrowserWindow({
+        width: _width,
+        height: _height + 20
+      })
+    }
     // Load HTML file into window
     // Loaded path = file://dirname/resultsWindow.html
     resultsWindow.loadURL(url.format({
