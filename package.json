@@ -1,6 +1,6 @@
 {
   "name": "nauticalc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A nautical calculations tool",
   "main": "main.js",
   "scripts": {
@@ -11,10 +11,10 @@
   },
   "author": {
 	  "name": "Adrian Reid",
-	  "email": "adrian@adrianreid.eu",
-	  "url": "http://www.adrianreid.eu"
+	  "email": "adrian@reidfam.uk",
+	  "url": "http://www.adrian.reidfam.uk"
   },
-  "homepage": "http://www.adrianreid.eu",
+  "homepage": "http://www.reidfam.uk/nauticalc/",
   "copyright": "Copyright 2018 © Adrian Reid",
   "license": "MIT",
   "repository": {
@@ -27,7 +27,7 @@
     "electron-packager": "^12.1.1"
   },
   "build": {
-    "appId": "eu.adrianreid.nauticalc",
+    "appId": "uk.reidfam.adrian.nauticalc",
     "productName": "NautiCalc",
     "mac": {
       "category": "public.app-category.utilities"
@@ -53,7 +53,9 @@
       ]
     },
     "win": {
-      "target": "nsis",
+      "target": [
+	      "nsis",
+	      "portable"],
       "icon": "build/icon.ico"
     }
   },
